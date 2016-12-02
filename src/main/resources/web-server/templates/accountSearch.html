@@ -1,0 +1,48 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="header :: copy"></head>
+<head th:replace="header :: copy2"></head>
+
+<body>
+
+	<div class="login-page">
+	    <div class="login-main">  	
+	    	 <div class="login-head">
+					<h1>Verificacion de Alumno</h1>
+				</div>
+				<div class="login-block">
+					<form action="#" th:object="${searchCriteria}" method="GET" th:action="@{/accounts/payments}" class="form-horizontal">
+						<input type="text" class="validate" id="number" placeholder="Codigo" required="" th:field="*{accountNumber}"/>
+						
+						<!-- Account Number errors (if any) -->
+						<div class="form-group" style="text-align:center;">
+							<div class="col-xs-12">
+								<span th:if="${#fields.hasErrors('accountNumber')}"
+									style="color: #FF5B5B; font-size: smaller; font-weight: bold" th:errors="*{accountNumber}"></span>
+							</div>
+						</div>
+						
+						<div class="forgot-top-grids">
+							<div class="forgot-grid">
+								<ul>
+									<li>
+										<input type="checkbox" id="brand1" value=""/>
+									</li>
+								</ul>
+							</div>
+							
+							<div class="clearfix"> </div>
+						</div>
+						<input type="submit" value="Verificar"/>	
+					</form>
+					<h5><a href="http://sistemas.unmsm.edu.pe/">Regresar</a></h5>
+				</div>
+	      </div>
+	</div>
+
+	<div th:replace="footer :: copy3"></div>
+	
+</body>
+</html>

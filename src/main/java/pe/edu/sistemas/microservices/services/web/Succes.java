@@ -4,18 +4,17 @@ import com.fasterxml.jackson.annotation.JsonRootName;
 
 @JsonRootName("Succes")
 public class Succes {
-	String name;
-	String count;
-	String email;
-	String cvv;
+	private String name;
+	private String count;
+	private String email;
+	private String cvv;
 	
 	
-	public Succes(String name, String count, String email, String cvv) {
-		this.name = name;
-		this.count = count;
-		this.email = email;
-		this.cvv = cvv;
+	public Succes() {
+		
 	}
+	
+	
 	public String getName() {
 		return name;
 	}

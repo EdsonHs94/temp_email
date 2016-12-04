@@ -132,6 +132,7 @@ public class WebAccountsController {
 	@RequestMapping("/accounts/{total}")
 	public String procesar(Model model, @PathVariable("total") String total){
 		model.addAttribute("total", total);
+	    model.addAttribute("Succes", new Succes());
 		return "pasarela";
 	}
 	
@@ -143,7 +144,7 @@ public class WebAccountsController {
 		mailMessage.setTo(succes.getEmail());
 		mailMessage.setTo(succes.getEmail());
 		mailMessage.setSubject("Pago Exitoso");
-		mailMessage.setText("El pago realizado por " +succes.getName() +"\n ha sido realizado");
+		mailMessage.setText("El pago realizado por " +succes.getName() +"\n ha sido exitoso");
 		javaMailService.send(mailMessage);
 
 		return "empty";

@@ -8,6 +8,7 @@ public class Succes {
 	private String count;
 	private String email;
 	private String cvv;
+	private float monto;
 	
 	
 	public Succes() {
@@ -27,6 +28,16 @@ public class Succes {
 	public void setCount(String count) {
 		this.count = count;
 	}
+	public float getMonto() {
+		return monto;
+	}
+
+
+	public void setMonto(float monto) {
+		this.monto = monto;
+	}
+
+
 	public String getEmail() {
 		return email;
 	}

@@ -125,11 +125,14 @@
 	}
 	
 	function recargar(){
-		var reload= `<h3>Monto Total: </h3>
-					 <input type="number" class="form-control" value="${total}" disabled="" style="width: 100px;"/>
-					 <div class="clearfix"></div>`;
+// 		var reload= `<h3>Monto Total: </h3>
+// 					 <input type="number" class="form-control" value="${total}" disabled="" style="width: 100px;" />
+// 					 <div class="clearfix"></div>`;
 
-		document.getElementById('monto').innerHTML = reload;
+// 		document.getElementById('monto').innerHTML = reload;
+		document.getElementById('totaly').value = total;
+		document.getElementById('totaly2').value = total;
+
 	}
 	
 </script>
@@ -184,7 +187,8 @@
 					<form action="#" th:object="${Monto}" th:action="@{/accounts/pagos}" method="post"  >
 						<div id="monto" class="col-md-4" style="padding: 20px;">
 					   		<h3>Monto Total: </h3>
-					   		<input type="number" class="form-control" value="150" placeholder="S/." disabled="" style="width: 100px;"  th:field="*{total}" />
+					   		<input type="number" class="form-control" value="" id="totaly" disabled="" style="width: 100px;"  th:field="*{total}" />
+					   		<input type="hidden"  id="totaly2" th:field="*{total}"/>
 					   		<div class="clearfix"></div>
 					    </div>
 					    <div class="col-md-8">

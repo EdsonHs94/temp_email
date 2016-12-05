@@ -73,6 +73,8 @@ public class WebAccountsController {
 		Account account = accountsService.findByNumber(accountNumber);
 		logger.info("web-service byNumber() fo	und: " + account);
 		model.addAttribute("account", account);
+		model.addAttribute("Monto", new ReturnMonto());
+		model.addAttribute("account", account);
 		return "account";
 		
 	}
@@ -91,17 +93,17 @@ public class WebAccountsController {
 //		return "paymentList";
 //	}
 	
-  	@RequestMapping("/accounts/owner/{text}")
-	public String ownerSearch(Model model, @PathVariable("text") String name) {
-		logger.info("web-service byOwner() invoked: " + name);
-
-		List<Account> accounts = accountsService.byOwnerContains(name);
-		logger.info("web-service byOwner() found: " + accounts);
-		model.addAttribute("search", name);
-		if (accounts != null)
-			model.addAttribute("accounts", accounts);
-		return "accounts";
-	}
+//  	@RequestMapping("/accounts/owner/{text}")
+//	public String ownerSearch(Model model, @PathVariable("text") String name) {
+//		logger.info("web-service byOwner() invoked: " + name);
+//
+//		List<Account> accounts = accountsService.byOwnerContains(name);
+//		logger.info("web-service byOwner() found: " + accounts);
+//		model.addAttribute("search", name);
+//		if (accounts != null)
+//			model.addAttribute("accounts", accounts);
+//		return "accounts";
+//	}
   	
   	
 	@RequestMapping(value = "/accounts/search", method = RequestMethod.GET)
@@ -123,18 +125,14 @@ public class WebAccountsController {
 		return byNumber(model, accountNumber);
 	}
 	
-	@RequestMapping("/accounts/pagos")
-	public String pasarela(Model model, ReturnMonto returnmonto) {
-		String total = returnmonto.getMonto();
-		return procesar(model, total);
-	}
-	
-	@RequestMapping("/accounts/{total}")
-	public String procesar(Model model, @PathVariable("total") String total){
-		model.addAttribute("total", total);
-	    model.addAttribute("Succes", new Succes());
+	@RequestMapping(value = "/accounts/pagos" , method=RequestMethod.POST)
+	public String pasarela(@ModelAttribute("Monto")ReturnMonto returnmonto ,Model model) {
+		model.addAttribute("total", returnmonto);
+		model.addAttribute("Succes", new Succes());
 		return "pasarela";
 	}
+	
+	
 	
 	
 	@RequestMapping(value = "/accounts/exito" , method=RequestMethod.POST)

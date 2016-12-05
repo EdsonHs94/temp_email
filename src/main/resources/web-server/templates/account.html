@@ -108,7 +108,7 @@
 			if (e) {
 				t.deleteRow(i);
 				
-				total=total-parseInt(d.innerHTML);
+				total=total-parseFloat(d.innerHTML);
 				recargar();
 			}
 		});
@@ -119,17 +119,12 @@
 			r = t.getElementsByTagName("tr")[1],
 			d = r.getElementsByTagName("td")[2];
 		
-		total=total+parseInt(d.innerHTML);
+		total=total+parseFloat(d.innerHTML);
 		
 		recargar();
 	}
 	
 	function recargar(){
-// 		var reload= `<h3>Monto Total: </h3>
-// 					 <input type="number" class="form-control" value="${total}" disabled="" style="width: 100px;" />
-// 					 <div class="clearfix"></div>`;
-
-// 		document.getElementById('monto').innerHTML = reload;
 		document.getElementById('totaly').value = total;
 		document.getElementById('totaly2').value = total;
 

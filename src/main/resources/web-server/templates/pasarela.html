@@ -4,14 +4,13 @@
 
 <head>
 
-
-<head th:replace="header :: copy2"></head>
-
 <link href="css/stylePasarela.css" rel="stylesheet" type="text/css" media="all"/>
 
 <!-- Custom Theme files -->
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<head th:replace="header :: copy2"></head>
 
 <script th:inline="javascript">
 
@@ -39,7 +38,6 @@ console.log(suc);
 			<p>Correo del Propietario</p>
 			<input type="text" placeholder="E-mail" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" th:field="*{email}"/>
 			<p>Fecha de Expiración</p>
-			<input type="hidden" value="${Succes.monto}" th:field="*{monto}"/>
 			<div class="expir-picker1">
 						<ul style="padding-left:0 !important;">						
 						<li>
@@ -81,20 +79,32 @@ console.log(suc);
 			  <div class="cvv-text">
 			    <p>Numero CVV</p>
 			    <input type="text" class="c-num" value="" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" th:field="*{cvv}"/>
+			  	<div class="clearfix;"> </div>
 			  </div>
 			  <div class="cvv-para">
-			    <p>Por favor, compruebe este campo</p>
+			    <p style="font-size:0.8em;">Por favor, compruebe este campo</p>
+			    <div class="clearfix;"> </div>
 			  </div>
-			   
-			   
-			   <div class="clear"> </div>
+			  <div class="cvv-monto">
+			    <p>Total en S/.</p>
+			    <input type="text" class="c-num" disabled="" value="${Succes.monto}" th:field="*{monto}" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}"/>
+			  	<div class="clearfix;"> </div>
+			  </div>
+			  <div class="clearfix;"> </div>
 			</div>
-			<input type="submit"/>		 	
+			<div style="text-align:center;">
+				<input id="continuar" value="Procesar" type="submit"/>
+				<div class="clearfix;"> </div>
+			</div>		 	
 		 </form>
 	</div>
 </div>
-
-<div th:replace="footer :: copy3"></div>
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+	<div th:replace="footer :: copy3"></div>
+	<div th:replace="footer :: copy4"></div>
 
 </body>
 </html>

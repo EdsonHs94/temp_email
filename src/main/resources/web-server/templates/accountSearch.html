@@ -10,11 +10,11 @@
 	<div class="login-page">
 	    <div class="login-main">  	
 	    	 <div class="login-head">
-					<h1>Verificacion de Alumno</h1>
+					<h1>Sistema de Pagos</h1>
 				</div>
 				<div class="login-block">
 					<form action="#" th:object="${searchCriteria}" method="GET" th:action="@{/accounts/payments}" class="form-horizontal">
-						<input type="text" class="validate" id="number" placeholder="Codigo" required="" th:field="*{accountNumber}"/>
+						<input type="text" class="validate" id="number" placeholder="Codigo de Alumno" required="" th:field="*{accountNumber}"/>
 						
 						<!-- Account Number errors (if any) -->
 						<div class="form-group" style="text-align:center;">

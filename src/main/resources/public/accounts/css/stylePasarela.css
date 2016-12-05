@@ -1,9 +1,5 @@
-
-
-
-/*--login start here--*/
- body{
-   font-size: 100%;
+body{
+	font-family: 'Roboto Condensed', sans-serif;
 }
 a {
   text-decoration: none;
@@ -62,7 +58,7 @@ h1 {
 }
 .check-bottom input[type="text"] {
     font-size: 1em;
-    color: #1fbfe7;
+    color: #034B93;
     padding: 0.5em 0.5em;
     display: block;
     width: 90%;
@@ -124,24 +120,30 @@ h1 {
 }
 .cvv-text {
     float: left;
-    width: 35%;
+    width: 30%;
 }
 .cvv-para {
-    float: right;
-    width: 60%;
-	margin-top:2em;
+    float: left;
+    width: 25%;
+	margin:1.5em 0.5em 0.2em 0.5em;
 }
 .cvv-para p {
     font-size: 1em;
     color: #D68910;
     font-weight: 600;
 }
-.check input[type="submit"] {
-    font-size: 1em;
+.cvv-monto {
+    float: right;
+    width: 25%;
+    margin-right: 30px;
+}
+#continuar{
+    font-size: 1.2em;
+    font-weight: bold;
     color: #fff;
     background: #337AB7;
-    width: 100%;
-    padding: 0.8em 0em;
+    padding: 0.7em 0;
+    width: 80%;
     outline: none;
     border: none;
     border-radius: 5px;
@@ -149,7 +151,7 @@ h1 {
 	text-shadow: 0px 1px 1px rgba(255, 255, 255, 0.63);
 	border-bottom: 3px solid #255c8c;
 }
-.check input[type="submit"]:hover {
+#continuar:hover {
     background:#DD8E1E;
 	border-bottom: 3px solid #bf7b1a;
 	transition: 0.5s all;
@@ -160,27 +162,7 @@ h1 {
 .clear{
     clear:both;
 }
-/*---copyrights--*/
-.copy-right {
-    margin: 2em 0em 2em 0em;
-}
-.copy-right p {
-    text-align: center;
-    font-size:1em;
-    color:#ff640f;
-    line-height: 1.5em;
-    font-family: 'Quicksand', sans-serif;
-}
-.copy-right p a{
-  color:#1fbfe7;
-}
-.copy-right p a:hover{
-	 color:#ff640f;
-	 transition: 0.5s all;
-  -webkit-transition: 0.5s all;
-  -moz-transition: 0.5s all;
-  -o-transition: 0.5s all;
-}
+
 /*---media queries start here--*/
 @media(max-width:1600px){
 .check {

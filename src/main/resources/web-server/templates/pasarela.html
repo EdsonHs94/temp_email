@@ -38,6 +38,7 @@ console.log(suc);
 			<p>Correo del Propietario</p>
 			<input type="text" placeholder="E-mail" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" th:field="*{email}"/>
 			<p>Fecha de Expiración</p>
+			<input type="hidden" value="${Succes.monto}" th:field="*{monto}"/>
 			<div class="expir-picker1">
 						<ul style="padding-left:0 !important;">						
 						<li>

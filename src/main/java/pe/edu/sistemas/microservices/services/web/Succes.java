@@ -9,8 +9,18 @@ public class Succes {
 	private String email;
 	private String cvv;
 	private float monto;
+	private String concepts;
 	
-	
+	public String getConcepts() {
+		return concepts;
+	}
+
+
+	public void setConcepts(String concepts) {
+		this.concepts = concepts;
+	}
+
+
 	public Succes() {
 		
 	}

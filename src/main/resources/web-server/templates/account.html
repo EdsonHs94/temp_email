@@ -56,6 +56,10 @@
 	var seleccionado=false;
 	var fila_anterior='';
 	var total=0;
+	var json = {}; 	
+	var json_str = ""; 	
+	var con = "";
+	
 	
 	function agregar(){
 		var lista = document.getElementById("opciones");
@@ -74,7 +78,7 @@
 		cont++;
 		mayor = cont;
 		
-	
+		json[cont] = textoSeleccionado ;
 		var fila='<tr class="selected" id="fila'+cont+'" onclick="seleccionar(this.id);"><td>'+payment[0].descripcion+'</td><td>'+textoSeleccionado+'</td><td>'+payment[0].monto+'</td><td><a class="btn btn-danger" style= "padding: 3.5px 10px; border-radius: 200px !important;" onclick="eliminar(this.parentNode.parentNode.rowIndex);"><span class="glyphicon glyphicon-trash"></span>Eliminar</a></td></tr>';
 		
 		$('#tabla').prepend(fila);
@@ -103,12 +107,33 @@
 		var t = document.getElementById("tabla"),
 			r = t.getElementsByTagName("tr")[i],
 			d = r.getElementsByTagName("td")[2]; 
+			concept = r.getElementsByTagName("td")[1].innerHTML;
+			
+		
 
 		alertify.confirm("Estas seguro de que quiere eliminar",function(e){
 			if (e) {
 				t.deleteRow(i);
+				//delete json[concept.toString()];
 				
-				total=total-parseFloat(d.innerHTML);
+				var id = null;
+				
+				$.each(json, function(i, item) {
+    				if(item == concept.toString()){
+    					//console.log("coincidence");
+    					id = i;
+    				}
+				});
+				
+				if(id != null) {
+					delete json[id.toString()];
+					
+				}
+				
+				json_str = JSON.stringify(json);
+				console.log(json_str);
+				console.log(json);
+				total=total-parseInt(d.innerHTML);
 				recargar();
 			}
 		});
@@ -125,9 +150,16 @@
 	}
 	
 	function recargar(){
+		
+		con = ""; 		
+		$.each(json, function(i, item) { 			
+			con = con + "," + item; 		
+			});
+		
 		document.getElementById('totaly').value = total;
 		document.getElementById('totaly2').value = total;
-
+		document.getElementById('concepts').value = con;
+		
 	}
 	
 </script>
@@ -184,6 +216,7 @@
 					   		<h3>Monto Total: </h3>
 					   		<input type="number" class="form-control" value="" id="totaly" disabled="" style="width: 100px;"  th:field="*{total}" />
 					   		<input type="hidden"  id="totaly2" th:field="*{total}"/>
+					   		<input type="hidden"  id="concepts" th:field="*{concepts}"/>
 					   		<div class="clearfix"></div>
 					    </div>
 					    <div class="col-md-8">

@@ -6,9 +6,22 @@ import com.fasterxml.jackson.annotation.JsonRootName;
 public class ReturnMonto {
 	
 	private float total;
+	private String concepts;
 	
 	
 	
+	public String getConcepts() {
+		return concepts;
+	}
+
+
+
+	public void setConcepts(String concepts) {
+		this.concepts = concepts;
+	}
+
+
+
 	public ReturnMonto() {
 		
 	}

@@ -1,9 +1,10 @@
 package pe.edu.sistemas.microservices.services.web;
 
-import java.sql.Date;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -135,6 +136,7 @@ public class WebAccountsController {
 		
 		Succes suc = new Succes();
 		suc.setMonto(returnmonto.getTotal());
+		suc.setConcepts(returnmonto.getConcepts());
 		model.addAttribute("total", returnmonto);
 		model.addAttribute("Succes", suc);
 		return "pasarela";
@@ -146,18 +148,25 @@ public class WebAccountsController {
 	@RequestMapping(value = "/accounts/exito" , method=RequestMethod.POST)
 	public String complete(@ModelAttribute("Succes")Succes succes, Model model){
 		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-		Date date = new Date(0);
+		Date date = new Date();
 		int numb;
+		String conceptos;
+		String tarjeta;
+		tarjeta= succes.getCount();
+		conceptos = succes.getConcepts();
+		conceptos = conceptos.substring(1);
+		char arr[] = tarjeta.toCharArray();
 		numb = ThreadLocalRandom.current().nextInt(10000000, 99999999 + 1);
 		SimpleMailMessage mailMessage=new SimpleMailMessage();
 		mailMessage.setTo(succes.getEmail());
 		mailMessage.setSubject(" ENVIO AUTOMATICO - CONSTANCIA DE TRANSFERENCIA- PASARELA DE PAGOS FISI");
 		mailMessage.setText("Constancia de Transferencia Pasarela de Pagos Fisi \n\n" + 
-		"Tarjeta: "+ succes.getCount()+"\n\n Titular: " +succes.getName() +
+		"Tarjeta: "+arr[0]+arr[1]+arr[2]+arr[3]+"-XXXX-XXXX-XXXX"+"\n\n Titular: " +succes.getName() +
 		"\n Fecha y Hora: "+dateFormat.format(date)+ "\n Numero de Operacion: "+numb+"\n Cuenta de origen: Ahorro soles 192-22964532-0-95 \n Cuenta de destino: Ahorro soles 480-17941698-0-89 \n Titular de la cuenta: UNIVERSIDAD NACIONAL MAYOR DE SAN MARCOS"+
+		"\nConceptos de Pago Cancelados: "+conceptos+
 		"\n MONTO: S/"+succes.getMonto());
 		javaMailService.send(mailMessage);
-		model.addAttribute("succes",succes);
+
 		return "empty";
 	}
 }
